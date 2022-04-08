@@ -12,24 +12,35 @@ namespace randomer
         {
             Random rand = new Random();
             int sum = 0;
-            int number = rand.Next(0, 100);
-            int[] massiveNumbers = new int[10]; 
+            int number = rand.Next(100);
+            int randomNumber;
+            int countRandomNumbers = 10;
+            int firstMultiplicity = 3;
+            int secondMultiplicity = 5;
+
             Console.WriteLine("Наше число:" + number);
 
-            for (int i = 0; i < massiveNumbers.Length; i++)
+            for (int i = 0; i < countRandomNumbers; i++)
             {
-                massiveNumbers[i] = rand.Next(-30,100);
-                Console.Write("Число:" + massiveNumbers[i]);
-                if (massiveNumbers[i] >0 && massiveNumbers[i] <= number)
+                randomNumber = rand.Next(100);
+                Console.Write("Число:" + randomNumber);
+
+                if (randomNumber < number)
                 {
-                    if (massiveNumbers[i] % 3 == 0 || massiveNumbers[i] % 5 == 0)
+                    if (randomNumber % firstMultiplicity == 0 || randomNumber % secondMultiplicity == 0)
                     {
                         Console.Write(" Подошло" + "\n");
-                        sum += massiveNumbers[i];
+                        sum += randomNumber;
                     }
-                    else Console.Write(" Не подошло" + "\n");
+                    else 
+                    {
+                        Console.Write(" Не подошло" + "\n");
+                    }
                 }
-                else Console.Write(" Не подошло" + "\n");
+                else
+                {
+                    Console.Write(" Не подошло" + "\n");
+                }
             }
 
             Console.WriteLine("Сумма подходящих числах равна " + sum);
